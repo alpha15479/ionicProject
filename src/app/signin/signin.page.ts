@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { AuthenticateService } from '../services/authentication.service';
 
 
@@ -9,17 +11,35 @@ import { AuthenticateService } from '../services/authentication.service';
   selector: 'app-signin',
   templateUrl: './signin.page.html',
   styleUrls: ['./signin.page.scss'],
+
 })
 export class SigninPage implements OnInit {
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   validations_form: FormGroup;
   errorMessage = '';
+  signInForm: FormGroup;
+  submitError: string;
+  authRedirectResult: Subscription;
 
-  constructor(private navCtrl: NavController,
+  
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      validation_messages = {
+        'email': [
+          { type: 'required', message: 'Email is required.' },
+          { type: 'pattern', message: 'Enter a valid email.' }
+        ],
+        'password': [
+          { type: 'required', message: 'Password is required.' },
+          { type: 'minlength', message: 'Password must be at least 6 characters long.' }
+        ]
+      };
+
+  constructor
+    (private navCtrl: NavController,
     private authService: AuthenticateService,
     private formBuilder: FormBuilder) { }
-
+    
     ngOnInit() {
 
       this.validations_form = this.formBuilder.group({
@@ -34,17 +54,12 @@ export class SigninPage implements OnInit {
       });
     }
 
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    validation_messages = {
-      email: [
-        { type: 'required', message: 'Email is required.' },
-        { type: 'pattern', message: 'Please enter a valid email.' }
-      ],
-      password: [
-        { type: 'required', message: 'Password is required.' },
-        { type: 'minlength', message: 'Password must be at least 5 characters long.' }
-      ]
-    };
+
+  redirectLoggedUserToProfilePage() {
+    throw new Error('Method not implemented.');
+  }
+
+
 
     loginUser(value) {
       this.authService.loginUser(value)

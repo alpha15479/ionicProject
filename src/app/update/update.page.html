@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="#dae698">
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
@@ -13,7 +13,6 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
     <ion-grid>
         <ion-row>
             <ion-col text-center>
@@ -51,10 +50,14 @@
                         <ion-input formControlName="date" type="text" required> </ion-input>
                     </ion-item>
                     <br>
-                    <ion-button [routerLink]="['/detail', id]" class="ion-margin-top" type="submit" expand="block" color="success">บันทึกการแก้ไขข้อมูล</ion-button>
+                    <div class="btn-dection">
+                        <ion-button [routerLink]="['/detail', id]" class="ion-margin-top" type="submit">
+                            บันทึกการแก้ไขข้อมูล</ion-button>
+                    </div>
+
                 </form>
             </ion-col>
-        </ion-row><br><br>
+        </ion-row>
     </ion-grid>
 
 </ion-content>
