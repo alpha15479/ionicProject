@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Detail UBU</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+            <ion-img [src]="image"></ion-img><br>
+            <h1>{{topic}}</h1><br>
+            <span class="ion-labell">
+                          Today :
+                          {{today | date:'fullDate'}}
+                      </span><br><br>
+            <h3>รายละเอียด</h3>
+            <h5>{{detail }}</h5><br>
+            <h6>{{link }}</h6>
+        </ion-card-content><br><br>
+    </ion-card>
+</ion-content>

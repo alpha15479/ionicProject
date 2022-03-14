@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Dashboard UBU</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let tmp of finalList">
+        <ion-card-content>
+            <ion-img [src]="tmp.image" (click)="showinfo(tmp)"></ion-img><br>
+            <h1>{{tmp.topic}}</h1><br>
+            <span class="ion-labell">
+                            Today :
+                            {{today | date:'fullDate'}}
+                        </span><br>
+            <p>{{ tmp.detail }}</p><br>
+            <p>{{ tmp.link }}</p>
+            <ion-button slot="start" (click)="showinfo(tmp)" name="settings">View</ion-button>
+            <ion-button slot="start" (click)="presentPromptEdit(tmp)" name="settings">Edit</ion-button>
+            <ion-button slot="start" (click)="presentConfirmDel(tmp)">Delete</ion-button>
+        </ion-card-content><br><br>
+    </ion-card>
+</ion-content>

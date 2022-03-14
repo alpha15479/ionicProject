@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'update/:id',
     loadChildren: () => import('./update/update.module').then( m => m.UpdatePageModule)
   },
+  {
+    path: 'final',
+    loadChildren: () => import('./final/final.module').then( m => m.FinalPageModule)
+  },
+  {
+    path: 'show/:sendobj',
+    loadChildren: () => import('./show/show.module').then( m => m.ShowPageModule)
+  },
 
 ];
 
